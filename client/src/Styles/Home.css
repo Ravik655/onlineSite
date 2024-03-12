@@ -1,0 +1,15 @@
+.card-img-top{
+    height: 300px;
+    box-shadow: 0.5px 0.5px;
+    border-radius: 5px;
+    transition: zoom 2s;
+ 
+}
+
+.card-body{
+    height:auto;
+}
+.card-img-top:hover{
+    transform: scale(1.2);
+ 
+}

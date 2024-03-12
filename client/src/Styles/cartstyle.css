@@ -1,0 +1,32 @@
+.container {
+    /* margin-top: 64px; */
+  }
+  
+  .container h1 {
+    padding: 15px !important;
+    font-family: "roboto", sans-serif;
+    font-weight: normal;
+    background-color: rgba(0, 0, 255, 0.072) !important;
+  }
+  .container h1 > p {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  
+  .container .card {
+    padding: 2px !important;
+    
+    margin-bottom: 5px !important;
+  }
+  .container .cart-remove-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px !important;
+
+  }
+  .container .cart-summary {
+    text-align: center;
+    /* margin-top: -140px !important; */
+  }
+  
