@@ -55,14 +55,6 @@ const ForgotPassword = () => {
     <Layout title={"Forgot password "}>
       <div className="row-container d-flex flex-row">
         <div className="col-md-4">
-          <img
-            src="/image/register.jpg"
-            alt="Register"
-            style={{ width: "100%" }}
-          />
-        </div>
-
-        <div className="col-md-4">
           <form onSubmit={handleSubmit}>
             <h4>RESET PASSWORD</h4>
             <input
