@@ -2,11 +2,13 @@ import React, { useCallback, useEffect, useState } from "react";
 import Layout from "../components/Layout/Layout";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useNavigate, } from "react-router-dom";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState({});
   const params = useParams();
   const [relatedproduct, setRelatedproduct] = useState([]);
+  const navigate = useNavigate();
 
   const BASE_URL = "https://onlinesite.onrender.com";
 
@@ -86,7 +88,10 @@ const ProductDetails = () => {
                   </p>
                   <p className="card-text">Rs{p.price}</p>
 
-                  <button class="btn btn-secondary ms-1">ADD TO CART</button>
+                  <button 
+                    class="btn btn-primary ms-1"
+                    onClick={() => navigate(`/product/${p._id}`)}
+                  >ADD TO CART</button>
                 </div>
               </div>
             ))}
