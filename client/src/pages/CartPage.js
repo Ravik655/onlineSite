@@ -8,6 +8,9 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import "../Styles/cartstyle.css";
 
+
+const BASE_URL = "https://onlinesite.onrender.com";
+
 const CartPage = () => {
   const { auth } = useAuth();
   const [cart, setCart] = useCart();
@@ -49,7 +52,7 @@ const CartPage = () => {
   // get payment token
   const getToken = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/braintree/token");
+      const { data } = await axios.get(`${BASE_URL}/api/v1/product/braintree/token`);
       setClientToken(data?.clientToken);
     } catch (error) {
       console.log(error);
@@ -64,7 +67,7 @@ const CartPage = () => {
     try {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
-      await axios.post("/api/v1/product/braintree/payment", {
+      await axios.post(`${BASE_URL}/api/v1/product/braintree/payment`, {
         nonce,
         cart,
       });

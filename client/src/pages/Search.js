@@ -2,6 +2,8 @@ import React from "react";
 import Layout from "../components/Layout/Layout";
 import { useSearch } from "../context/Search";
 
+const BASE_URL = "https://onlinesite.onrender.com";
+
 const Search = () => {
   const { values } = useSearch();
   return (
@@ -16,13 +18,12 @@ const Search = () => {
           </h6>
           <div className="d-flex flex-wrap m-2">
             {values?.result?.map((p) => (
-              <div  key={p._id} className="card m-2" style={{ width: "18rem" }}>
+              <div key={p._id} className="card m-2" style={{ width: "18rem" }}>
                 <img
                   // dynamic exice
-                  src={`/api/v1/product/product-photo/${p._id}`}
+                  src={`{$BASE_URL}/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
-                  
                 />
                 <div className="card-body">
                   <h5 className="card-title">{p.name}</h5>

@@ -6,6 +6,8 @@ import { useAuth } from "../../context/auth";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 
+const BASE_URL = "https://onlinesite.onrender.com";
+
 const Order = () => {
   const [order, setOrder] = useState([]);
   const { auth } = useAuth();
@@ -13,7 +15,7 @@ const Order = () => {
 
   const getOrder =useCallback( async () => {
     try {
-      const { data } = await axios.get("/api/v1/auth/Order");
+      const { data } = await axios.get(`${BASE_URL}/api/v1/auth/Order`);
       setOrder(data);
     } catch (error) {
       console.log(error);

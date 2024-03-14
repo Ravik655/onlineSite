@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/Cart";
 import toast from "react-hot-toast";
 
+const BASE_URL = "https://onlinesite.onrender.com";
+
 const Home = () => {
   const [checked, setChecked] = useState([]);
   const [product, setProduct] = useState([]);
@@ -23,7 +25,9 @@ const Home = () => {
   // get all category
   const getAllcategory = async () => {
     try {
-      const { data } = await axios.get("/api/v1/category/get-category");
+      const { data } = await axios.get(
+        `${BASE_URL}/api/v1/category/get-category`
+      );
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -41,7 +45,9 @@ const Home = () => {
   const getAllProduct = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/v1/product/get-product`);
+      const { data } = await axios.get(
+        `${BASE_URL}/api/v1/product/get-product`
+      );
       setLoading(false);
       if (data?.product) {
         setProduct(data.product);
@@ -55,7 +61,9 @@ const Home = () => {
   // get Total
   const getTotal = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/product-count");
+      const { data } = await axios.get(
+        `${BASE_URL}/api/v1/product/product-count`
+      );
       setTotal(data?.total);
     } catch (error) {
       console.log(error);
@@ -66,7 +74,9 @@ const Home = () => {
   const loadMore = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(
+        `${BASE_URL}/api/v1/product/product-list/${page}`
+      );
       setLoading(false);
       setProduct([...product, ...data?.product]);
     } catch (error) {
@@ -92,24 +102,26 @@ const Home = () => {
   }, [checked.length, radio.length]);
 
   // post filter product
-  const filterProduct =useCallback( async () => {
+  const filterProduct = useCallback(async () => {
     try {
-      const { data } = await axios.post("/api/v1/product/filter-product", {
-        checked,
-        radio,
-      });
+      const { data } = await axios.post(
+        `${BASE_URL}/api/v1/product/filter-product`,
+        {
+          checked,
+          radio,
+        }
+      );
       if (data?.product) {
         setProduct(data?.product);
       }
     } catch (error) {
       console.log(error);
     }
-  },[checked, radio, setProduct]);
+  }, [checked, radio, setProduct]);
 
-  
   useEffect(() => {
     if (checked.length || radio.length) filterProduct();
-  }, [filterProduct,checked, radio]);
+  }, [filterProduct, checked, radio]);
 
   return (
     <Layout title={"All Product-shop Now"}>

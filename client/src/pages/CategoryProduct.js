@@ -13,11 +13,12 @@ const CategoryProduct = () => {
   const [total] = useState(0);
 
   const categorySlug = params?.slug;
+  const BASE_URL = "https://onlinesite.onrender.com";
 
   const getProductbyCategory = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/product/product-category/${categorySlug}`
+        `${BASE_URL}/api/v1/product/product-category/${categorySlug}`
       );
       setProduct(data?.product);
       setCategoy(data?.category);
@@ -34,7 +35,7 @@ const CategoryProduct = () => {
   const loadMore = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await axios.get(`${BASE_URL}/api/v1/product/product-list/${page}`);
       setLoading(false);
       setProduct([...product, ...data?.product]);
     } catch (error) {

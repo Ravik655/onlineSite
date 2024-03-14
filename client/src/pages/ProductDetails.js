@@ -8,15 +8,15 @@ const ProductDetails = () => {
   const params = useParams();
   const [relatedproduct, setRelatedproduct] = useState([]);
 
-  
+  const BASE_URL = "https://onlinesite.onrender.com";
 
   // get product
-  const getProduct =useCallback( async () => {
+  const getProduct = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/product/get-product/${params.slug}`
+        `${BASE_URL}/api/v1/product/get-product/${params.slug}`
       );
-    
+
       if (data && data.product) {
         setProduct(data?.product);
         getsimilarproduct(data?.product?._id, data?.product.category);
@@ -26,18 +26,18 @@ const ProductDetails = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [params.slug]);
+  }, [params.slug, BASE_URL]);
   useEffect(() => {
     if (params?.slug) getProduct();
-  }, [params.slug,getProduct]);
+  }, [params.slug, getProduct]);
 
   // get similar product
   const getsimilarproduct = async (pid, cid) => {
     try {
       const { data } = await axios.get(
-        `/api/v1/product/related-product/${pid}/${cid}`
+        `${ BASE_URL}/api/v1/product/related-product/${pid}/${cid}`
       );
-     
+
       setRelatedproduct(data?.product);
     } catch (error) {
       console.log("Error fetching related products:", error);

@@ -6,6 +6,10 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useAuth } from "../../context/auth";
 
+
+
+const BASE_URL = "https://onlinesite.onrender.com";
+
 const Profile = () => {
   // context
   const { auth, setAuth } = useAuth();
@@ -28,7 +32,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put("/api/v1/auth/profile", {
+      const { data } = await axios.put(`${BASE_URL}/api/v1/auth/profile`, {
         name,
         email,
         password,
