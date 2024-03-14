@@ -28,7 +28,7 @@ server.use("/api/v1/category", categoryRoutes);
 server.use("/api/v1/product", productRoutes);
 
 // rest api
-server.get("/", (req, res) => {
+server.get("/https://online-site-client.vercel.app/", (req, res) => {
   res.send({
     message: "welcome to my site",
   });
