@@ -5,6 +5,10 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import "../../Styles/authStyle.css";
 
+
+
+const BASE_URL = "https://onlinesite.onrender.com";
+
 const ForgotPassword = () => {
   const [email, setEmail] = useState();
   const [newPassword, setNewPassword] = useState("");
@@ -34,7 +38,7 @@ const ForgotPassword = () => {
     }
 
     try {
-      const res = await axios.post("/api/v1/auth/forgot-password", {
+      const res = await axios.post(`${BASE_URL}/api/v1/auth/forgot-password`, {
         email,
         newPassword,
         answer,

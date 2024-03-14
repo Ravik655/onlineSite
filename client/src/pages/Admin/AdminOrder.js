@@ -8,6 +8,9 @@ import axios from "axios";
 import { Select } from "antd";
 const { Option } = Select;
 
+
+const BASE_URL = "https://onlinesite.onrender.com";
+
 const AdminOrder = () => {
   const [order, setOrder] = useState([]);
   const { auth } = useAuth([]);
@@ -23,7 +26,7 @@ const AdminOrder = () => {
 
     const getOrder = async () => {
       try {
-        const { data } = await axios.get("/api/v1/auth/all-Order");
+        const { data } = await axios.get(`${BASE_URL}/api/v1/auth/all-Order`);
         setOrder(data);
       } catch (error) {
         console.log(error);
@@ -38,7 +41,7 @@ const AdminOrder = () => {
   const handleChange = async (orderId, value) => {
     try {
       const { data } = await axios.put(
-        `/api/v1/auth/status-update/${orderId}`,
+        `${BASE_URL}/api/v1/auth/status-update/${orderId}`,
         {
           status: value,
         }
@@ -100,7 +103,7 @@ const AdminOrder = () => {
                       <div className="row mb-2 p-3 card flex-row" key={p._id}>
                         <div className="col-md-4">
                           <img
-                            src={`/api/v1/product/product-photo/${p._id}`}
+                            src={`${BASE_URL}/api/v1/product/product-photo/${p._id}`}
                             className="card-img-top"
                             alt={p.name}
                             width="100px"

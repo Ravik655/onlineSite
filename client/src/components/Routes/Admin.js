@@ -4,13 +4,15 @@ import { Outlet } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../Spinner";
 
+const BASE_URL = "https://onlinesite.onrender.com";
+
 const AdminRoute = () => {
   const [ok, setOk] = useState(false);
   const { auth } = useAuth();
 
   
     const authCheck =  useCallback(async () => {
-      const res = await axios.get("/api/v1/auth/Admin-auth");
+      const res = await axios.get(`${BASE_URL}/api/v1/auth/Admin-auth`);
       if (res.data.ok) {
         setOk(true);
       } else {

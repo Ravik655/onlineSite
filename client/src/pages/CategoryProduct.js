@@ -13,6 +13,7 @@ const CategoryProduct = () => {
   const [total] = useState(0);
 
   const categorySlug = params?.slug;
+  
   const BASE_URL = "https://onlinesite.onrender.com";
 
   const getProductbyCategory = useCallback(async () => {
@@ -57,7 +58,7 @@ const CategoryProduct = () => {
                 <div className="card m-2" style={{ width: "18rem" }}>
                   <img
                     // dynamic exice
-                    src={`/api/v1/product/product-photo/${p._id}`}
+                    src={`${BASE_URL}/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />

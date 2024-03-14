@@ -20,11 +20,14 @@ const UpdateProduct = () => {
   const [categories, setCategories] = useState([]);
   const [description, setDescription] = useState("");
 
+
+  const BASE_URL = "https://onlinesite.onrender.com";
+
   // getSingle category
   const getSingleProduct = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/product/get-product/${params.slug}`
+        `${BASE_URL}/api/v1/product/get-product/${params.slug}`
       );
 
       setDescription(data.product.description);
@@ -48,7 +51,7 @@ const UpdateProduct = () => {
   // get category
   const getAllcategories = async () => {
     try {
-      const { data } = await axios.get("/api/v1/category/get-category");
+      const { data } = await axios.get(`${BASE_URL}/api/v1/category/get-category`);
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -73,8 +76,10 @@ const UpdateProduct = () => {
       productData.append("price", price);
       photo && productData.append("photo", photo);
       productData.append("category", category);
+
+
       const { data } = await axios.put(
-        `/api/v1/product/update-product/${params.slug}`,
+        `${BASE_URL}/api/v1/product/update-product/${params.slug}`,
         productData
       );
       if (data?.success) {
@@ -94,7 +99,7 @@ const UpdateProduct = () => {
       let answer = window.confirm("Are you sure want to delete this product");
       if (!answer) return;
       const { data } = await axios.delete(
-        `/api/v1/product/delete-product/${params.slug}`
+        `${BASE_URL}/api/v1/product/delete-product/${params.slug}`
       );
       if (data.success) {
         toast.success("product deleted");
@@ -160,7 +165,7 @@ const UpdateProduct = () => {
                       <div className="text-center">
                         {
                           <img
-                            src={`/api/v1/product/product-photo/${params.slug}`}
+                            src={`${BASE_URL}/api/v1/product/product-photo/${params.slug}`}
                             alt="product-Preview"
                             height={"200px"}
                             className="img img-responsive"

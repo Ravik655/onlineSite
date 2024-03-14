@@ -7,6 +7,8 @@ import { Select } from "antd";
 import { useNavigate } from "react-router-dom";
 const { Option } = Select;
 
+const BASE_URL = "https://onlinesite.onrender.com";
+
 const CreateProduct = () => {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
@@ -21,7 +23,7 @@ const CreateProduct = () => {
   // get category
   const getAllcategories = async () => {
     try {
-      const { data } = await axios.get("/api/v1/category/get-category");
+      const { data } = await axios.get(`${BASE_URL}/api/v1/category/get-category`);
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -49,7 +51,7 @@ const CreateProduct = () => {
       productData.append("shipping", shipping);
 
       const { data } = await axios.post(
-        "/api/v1/product/create-product",
+        `${BASE_URL}/api/v1/product/create-product`,
         productData
       );
       if (data?.success) {

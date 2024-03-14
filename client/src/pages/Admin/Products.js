@@ -5,13 +5,17 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+
+
+const BASE_URL = "https://onlinesite.onrender.com";
+
 const Products = () => {
   const [product, setProduct] = useState([]);
 
   // get All product
   const getAllProducts = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/get-product");
+      const { data } = await axios.get(`${BASE_URL}/api/v1/product/get-product`);
       setProduct(data.product);
     } catch (error) {
       console.log(error);
@@ -40,7 +44,7 @@ const Products = () => {
                 <div className="card m-2" style={{ width: "18rem" }}>
                   <img
                     // dynamic exice
-                    src={`/api/v1/product/product-photo/${p._id}`}
+                    src={`${BASE_URL}/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />

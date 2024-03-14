@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/auth";
 
+const BASE_URL = "https://onlinesite.onrender.com";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +22,7 @@ const Login = () => {
     }
 
     try {
-      const res = await axios.post("/api/v1/auth/login", {
+      const res = await axios.post(`${BASE_URL}/api/v1/auth/login`, {
         email,
         password,
       });

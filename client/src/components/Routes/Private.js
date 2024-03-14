@@ -4,6 +4,8 @@ import { Outlet } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../Spinner";
 
+const BASE_URL = "https://onlinesite.onrender.com";
+
 const PrivateRoute = () => {
   const { auth } = useAuth();
   const [ok, setOk] = useState(false);
@@ -12,7 +14,7 @@ const PrivateRoute = () => {
   useEffect(() => {
     const authCheck = async () => {
       try {
-        const res = await axios.get("/api/v1/auth/user-auth");
+        const res = await axios.get(`${BASE_URL}/api/v1/auth/user-auth`);
         if (isMounted) {
           if (res.data.ok) {
             setOk(true);

@@ -106,7 +106,7 @@ const CartPage = () => {
                   {" "}
                   <img
                     // dynamic exice
-                    src={`/api/v1/product/product-photo/${p._id}`}
+                    src={`${BASE_URL}/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />

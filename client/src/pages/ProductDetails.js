@@ -50,7 +50,7 @@ const ProductDetails = () => {
         <div className="col-md-5 text-center">
           <img
             // dynamic exice
-            src={`/api/v1/product/product-photo/${params.slug}`}
+            src={`${BASE_URL}/api/v1/product/product-photo/${params.slug}`}
             className="card-img-top"
             alt={product.name}
             height="400px"
@@ -75,7 +75,7 @@ const ProductDetails = () => {
               <div className="card m-2" style={{ width: "18rem" }}>
                 <img
                   // dynamic exice
-                  src={`/api/v1/product/product-photo/${p._id}`}
+                  src={`${BASE_URL}/api/v1/product/product-photo/${p._id}`}
                   className="card-img-top"
                   alt={p.name}
                 />

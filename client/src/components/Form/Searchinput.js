@@ -3,6 +3,8 @@ import { useSearch } from "../../context/Search";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const BASE_URL = "https://onlinesite.onrender.com";
+
 const Searchinput = () => {
   const { values, setValues } = useSearch();
   const navigate = useNavigate();
@@ -12,7 +14,7 @@ const Searchinput = () => {
 
     try {
       const { data } = await axios.get(
-        `/api/v1/product/search/${values.keyword}`
+        `${BASE_URL}/api/v1/product/search/${values.keyword}`
       );
       setValues({ ...values, result: data });
       navigate("/search");

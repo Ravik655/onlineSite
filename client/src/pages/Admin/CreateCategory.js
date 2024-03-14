@@ -6,6 +6,9 @@ import axios from "axios";
 import CategoryForm from "../../components/Form/CategoryForm";
 import { Modal } from "antd";
 
+
+const BASE_URL = "https://onlinesite.onrender.com";
+
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
@@ -17,7 +20,7 @@ const CreateCategory = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("/api/v1/category/create-category", {
+      const { data } = await axios.post(`${BASE_URL}/api/v1/category/create-category`, {
         name,
       });
       if (data?.success) {
@@ -34,7 +37,7 @@ const CreateCategory = () => {
   // get All category
   const getAllcategories = async () => {
     try {
-      const { data } = await axios.get("/api/v1/category/get-category");
+      const { data } = await axios.get(`${BASE_URL}/api/v1/category/get-category`);
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -54,7 +57,7 @@ const CreateCategory = () => {
     e.preventDefault();
     try {
       const { data } = await axios.put(
-        `/api/v1/category/update-category/${selected._id}`,
+        `${BASE_URL}/api/v1/category/update-category/${selected._id}`,
         { name: updatedName }
       );
       if (data.success) {
@@ -76,7 +79,7 @@ const CreateCategory = () => {
   const handleDelete = async (id) => {
     try {
       const { data } = await axios.delete(
-        `/api/v1/category/delete-category/${id}`
+        `${BASE_URL}/api/v1/category/delete-category/${id}`
       );
       if (data.success) {
         toast.success(`category is deleted`);
